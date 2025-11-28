@@ -6,4 +6,4 @@
 
 ***Side car pod:*** Nginx container logs in ephemeral volume
                     logger will push logs to external storage
-                    Both will run in same pod
+                    Both will run in same pod.
