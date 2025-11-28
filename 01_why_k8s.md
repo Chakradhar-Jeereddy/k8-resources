@@ -39,6 +39,8 @@
 2) EKSCTL to manage control plane.
 3) KUBECTL to manage resource plane/nodes.
 
+***K8s***
+- We build the image with docker and run the container using k8s.
 
 
 
