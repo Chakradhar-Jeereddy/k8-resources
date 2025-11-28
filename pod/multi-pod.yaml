@@ -12,6 +12,7 @@ spec:
     ports:
     - containerPort: 80
   - name: alpine
-    image: apline:latest
+    image: apline:3.22.2
     ports:
     - containerPort: 8080
+    cmd: ["sleep","3000"]
