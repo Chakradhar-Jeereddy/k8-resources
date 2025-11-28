@@ -12,8 +12,8 @@ spec:
     image: nginx
     ports:
     - containerPort: 80
-  - name: alpine
-    image: apline:3.22.2
+  - name: almalinux
+    image: almalinux:9
     ports:
     - containerPort: 8080
     command: ["sleep","3000"]
