@@ -10,7 +10,7 @@ spec:
   - name: nginx
     image: nginx
     ports: 
-      containerPort: 80
+    - containerPort: 80
     resources:
       requests:
         cpu: "10m"
