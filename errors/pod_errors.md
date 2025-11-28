@@ -13,3 +13,4 @@ spec:
    image: nginxerrrr -->
  - name: almalinux
    image: almalinux
+```
