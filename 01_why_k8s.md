@@ -36,8 +36,8 @@
 
 ***Limatation for Managed k8s***
 1) No ssh accress to the control plane.
-2) EKSCTL to manage control plane.
-3) KUBECTL to manage resource plane/nodes.
+2) EKSCTL to manage control plane.  Installation readme (https://github.com/eksctl-io/eksctl)
+3) KUBECTL to manage resource plane/nodes. 
 
 ***K8s***
 - We build the image with docker and run the container using k8s.
