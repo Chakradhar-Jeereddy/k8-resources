@@ -1,3 +1,4 @@
+### EKS by default installs mertics-server
 ***eksctl create cluster --config-file=eks.yaml***
 - The yaml file defines the name of the clyster, region,
 - managed group: A pool of nodes managed by AWS

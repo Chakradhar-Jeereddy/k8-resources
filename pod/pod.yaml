@@ -14,7 +14,7 @@ spec:
     - containerPort: 80
     resources:
       requests:
-        cpu: "10m"
+        cpu: "10m" #1000 milli cores is 1cpu
         memory: "10Mi"
       limits:
         cpu: "20m"
