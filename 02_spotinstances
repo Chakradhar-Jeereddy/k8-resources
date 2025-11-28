@@ -1,0 +1,5 @@
+### Spot instances
+1) You get 70% discount from on-demand price.
+   Will be reclaimed by AWS with 2 minutes notice.
+   Basically they allow to use reserved capacity to gain some money.
+2) Used for non-prod instances to reduce cost.

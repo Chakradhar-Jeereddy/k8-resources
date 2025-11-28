@@ -4,8 +4,8 @@ kind: ClusterConfig
 metadata:
     name: roboshop-dev
     region: us-east-1
-managedNodeGroups:
+managedNodeGroups:   # AWS will manage it
   - name: roboshop-dev
     instanceTypes: ["m5.large","t3.small", "t3.medium","c5.large"]
-    desiredCapacity: 2 #  by default this value is 3
-    spot: true
+    desiredCapacity: 2 #  by default this value is 3 nodes
+    spot: true  # It will create spot instances.
