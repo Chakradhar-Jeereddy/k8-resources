@@ -7,7 +7,7 @@ spec:
   project: roboshop
   component: frontend
   environment: dev
-ports:
+ ports:
   - protocal: TCP
     port: 80
     targetPort: 80 # container port
