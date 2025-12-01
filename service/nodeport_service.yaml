@@ -7,8 +7,9 @@ spec:
   project: roboshop
   component: frontend
   environment: dev
- type: NodePort
+  purpose: node-port
+ type: NodePort # it we don't specify it will consider as cluster ip
  ports:
   - protocol: TCP
-    port: 80
+    port: 80 #service port
     targetPort: 80 # container port
