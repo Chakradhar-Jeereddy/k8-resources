@@ -16,8 +16,8 @@ spec:
   template:
     metadata:
       labels:
-      purpose: deploy-demo
-      project: roboshop
+       purpose: deploy-demo
+       project: roboshop
     spec:
       containers:
       - image: nginx
