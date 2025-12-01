@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+# These are deployment labels
+  labels:
+    app: nginx
+    name: nginx
+spec:
+  replicas: 1
+  selector:
+# These labels are used to select the pods and replicaset
+    matchLabels:
+      purpose: deploy-demo
+      project: roboshop
+# This is pod template
+  template:
+    metadata:
+      labels:
+      purpose: deploy-demo
+      project: roboshop
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
