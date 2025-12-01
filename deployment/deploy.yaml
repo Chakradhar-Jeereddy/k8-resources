@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+ name: nginx-deploy
 # These are deployment labels
-  labels:
+ labels:
     app: nginx
-    name: nginx
 spec:
   replicas: 1
   selector:
