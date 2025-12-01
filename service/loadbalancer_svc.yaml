@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name:  nginx-lb
+spec:
+ selector:
+  project: roboshop
+  component: frontend
+  environment: dev
+  purpose: loadbalancer #EKS nodeport rance 30000-32767
+ type: LoadBalance
+ ports:
+  - protocol: TCP
+    port: 80 #service port
+    targetPort: 80 # container port
+    nodePort: 30007

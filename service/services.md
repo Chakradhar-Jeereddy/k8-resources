@@ -22,7 +22,7 @@
 - Cluster IP < NodePort < Loadbalancer
 
 ***Drawback of loadbalancer***
-- We will be exposing the IPs of the nodes
+- We will be exposing the IPs of the nodes of cluster(not secure)
 - No load balancing.
 
 ***Loadbalancer***
