@@ -9,7 +9,7 @@ spec:
  replicas: 1
  selector:
   # These lables are used to select pods
-  matchlabels:
+  matchLabels:
    purpose: rs-demo
    project: roboshop
  # pod defination
