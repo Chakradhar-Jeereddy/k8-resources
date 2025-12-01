@@ -8,7 +8,7 @@ spec:
   component: frontend
   environment: dev
   purpose: loadbalancer #EKS nodeport rance 30000-32767
- type: LoadBalance
+ type: LoadBalancer
  ports:
   - protocol: TCP
     port: 80 #service port
