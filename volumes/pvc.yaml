@@ -16,7 +16,7 @@ metadata:
  name: nginx
 spec:
  nodeSelector:
-  pvc: node
+  pvc: node # Controling which node the pod should be scheduled. 
  containers:
  - name: nginx
    image: nginx
