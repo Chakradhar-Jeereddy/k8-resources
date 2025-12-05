@@ -32,15 +32,15 @@
 
 ## Persistent storage
 1. EBS - Elastic blockstorage
-         Like hard disk, should be close to VM/Computer
-         Data transfer is very fast
-         can connect to only one computer at a time
-         Database and OS should be in EBS
+         Like hard disk, should be close to VM/Computer.
+         Data transfer is very fast.
+         Can connect to only one computer at a time.
+         Database and OS should be in EBS.
 
 2. EFS - Elastic filestorage
-         Like NFS, can be anywhere in the network
-         data transfer is slow complered to EBS.
-         can be used in multiple systems at a time.
+         Like NFS, can be anywhere in the network.
+         Data transfer is slow complered to EBS.
+         Can be used in multiple systems at a time.
          Databases and OS can't be used in EFS.
          You can keep files in EFS.
 
@@ -57,7 +57,7 @@ Storage administration
 - Backup and restore data
 
 ***K8s admins are not storage admins:*** The wrappers are created to manage 
-                                         storate easily.
+                                         storage easily.
 
 1. PVC - Claim form/persistent volume claim to mount storage
 2. PV - Persistent volume equivalent to disk.
