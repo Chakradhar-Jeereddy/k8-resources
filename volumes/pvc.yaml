@@ -15,6 +15,8 @@ kind: Pod
 metadata:
  name: nginx
 spec:
+ nodeSelector:
+  pvc: node
  containers:
  - name: nginx
    image: nginx
@@ -25,3 +27,15 @@ spec:
  - name: nginx-html
    persistentVolumeClaim: 
     claimName: ebs-static-pvc
+
+#Errors
+#Events:
+#  Type     Reason              Age                From                     Message
+#  ----     ------              ----               ----                     -------
+#  Normal   Scheduled           20s                default-scheduler        Successfully assigned default/nginx to ip-192-168-35-67.ec2.internal
+#  Warning  FailedAttachVolume  19s                attachdetach-controller  AttachVolume.Attach failed for volume "ebs-static" : rpc error: code = Internal desc = Could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": operation error EC2: AttachVolume, https response error StatusCode: 400, RequestID: 7b3a9c31-acb8-4feb-8ed5-c224a365e83d, api error InvalidVolume.ZoneMismatch: The volume 'vol-06bd8947def6bd416' is not in the same availability zone as instance 'i-00197fdeb51658001'
+#  Warning  FailedAttachVolume  18s                attachdetach-controller  AttachVolume.Attach failed for volume "ebs-static" : rpc error: code = Internal desc = Could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": operation error EC2: AttachVolume, https response error StatusCode: 400, RequestID: 450cdd73-0f3f-4fc2-8f09-0986ca7b24e8, api error InvalidVolume.ZoneMismatch: The volume 'vol-06bd8947def6bd416' is not in the same availability zone as instance 'i-00197fdeb51658001'
+#  Warning  FailedAttachVolume  14s (x2 over 16s)  attachdetach-controller  AttachVolume.Attach failed for volume "ebs-static" : rpc error: code = Internal desc = Could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": operation error EC2: AttachVolume, https response error StatusCode: 400, RequestID: 45061367-eda0-433a-9fcb-8cc8c2f27aa1, api error InvalidVolume.ZoneMismatch: The volume 'vol-06bd8947def6bd416' is not in the same availability zone as instance 'i-00197fdeb51658001'
+#  Warning  FailedAttachVolume  9s                 attachdetach-controller  AttachVolume.Attach failed for volume "ebs-static" : rpc error: code = Internal desc = Could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": operation error EC2: AttachVolume, https response error StatusCode: 400, RequestID: f0e3c7d6-b419-4cb5-85d7-b5cc6f3ec12e, api error InvalidVolume.ZoneMismatch: The volume 'vol-06bd8947def6bd416' is not in the same availability zone as instance 'i-00197fdeb51658001'
+#  Warning  FailedAttachVolume  1s                 attachdetach-controller  AttachVolume.Attach failed for volume "ebs-static" : rpc error: code = Internal desc = Could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": could not attach volume "vol-06bd8947def6bd416" to node "i-00197fdeb51658001": operation error EC2: AttachVolume, https response error StatusCode: 400, RequestID: a8ea9f46-acd9-494b-a8e0-02240c7f56f9, api error InvalidVolume.ZoneMismatch: The volume 'vol-06bd8947def6bd416' is not in the same availability zone as instance 'i-00197fdeb51658001'
+

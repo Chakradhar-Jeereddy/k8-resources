@@ -1,3 +1,4 @@
+#Frist create EBS volume in an AZ, add EBS permissions to IAM role of EC2 instance
 apiVersion: v1
 kind: PersistentVolume
 metadata:
