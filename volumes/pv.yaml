@@ -15,5 +15,5 @@ spec:
 # Recycled:Data is removed if PVC is deleted but not disk. Makes it available to reclaim.
   csi:
     driver: ebs.csi.aws.com
-    volumeHandle: vol-0fa32877c1b61efce
+    volumeHandle: vol-06bd8947def6bd416
     fsType: "ext4"
