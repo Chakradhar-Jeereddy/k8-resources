@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ebs-static
+spec:
+  capacity:
+    storage: 15Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain # If PVC is deleted, PV still exists but released.
+# It is not available for another claim, becuase data remains in PV.
+# Delete PV, manually cleanup data in external storage, manually delete the storage.
+# Delete: the plugin removes PV and associated external storage when PVC is removed.
+# Recycled:Data is removed if PVC is deleted but not disk. Makes it available to reclaim.
+  csi:
+    driver: ebs.csi.aws.com
+    volumeHandle: vol-0fa32877c1b61efce
+    fsType: "ext4"

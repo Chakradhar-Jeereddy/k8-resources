@@ -67,3 +67,27 @@ Storage administration
 - Cliam is PVC
 - Package is PV
 - Storage is underlying disk(EBS/EFS)
+
+Obsolete approach
+=================
+- Write an email and raise a ticket to storage team asking for some GB like 100GB.
+- Get approval from delivery manager and assign them to storage team.
+- Someone in the storage team creates the disk.
+- You will ask k8 admin to create PV, it is namespace level resource.
+
+PV - It is equivalant object inside k8 that represents physical disk.
+     Then roboshop devops engineer creates PVC and attach to pod.
+
+EBS
+===
+1. Create the disk
+2. Disk should be in same azx as the instance
+3. Install EBS drivers
+4. EC2 instance should have IAM role to access EBS volumes.
+
+***EBS Driver Installation***
+```
+https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
+kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.53"
+```
+
