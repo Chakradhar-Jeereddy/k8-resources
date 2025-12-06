@@ -111,4 +111,24 @@ provisioner: ebs.csi.aws.com
 volumeBindingMode: WaitForFirstConsumer
 ```
 
+EFS
+===
+- EFS is elastic and size can go upto PB, it has max filesize 47.9 TB.
+- It automatically expands its size as needed, you for what used.
+- We can select fs type in EBS, but EFS has fixed type called NFS.
+- EBS not requied SG, for EFS we should attach security group(its in network).
+- NFS port is 2049
+- Allow 2049 in EFS SG from EC2 SG
 
+EFS Static provisioning
+=======================
+1. Create disk.
+2. Install the EFS drivers.
+```
+kubectl kustomize \
+    "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-2.1" > public-ecr-driver.yaml
+k apply -f public-ecr-driver.yaml
+```
+3. EC2 nodes should have IAM roles to access and mount EFS volumes.
+4. EFS-> Create EFS->Name: roboshop-> EKS VPC-> Create.
+5. IAM Roles -> add permissions->attach policy->AmazonEFSCSIDriverPolicy->add.
