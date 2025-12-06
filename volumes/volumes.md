@@ -80,8 +80,8 @@ PV - It is equivalant object inside k8 that represents physical disk.
 
 EBS
 ===
-1. Create the disk
-2. Disk should be in same azx as the instance
+1. Create the volume.
+2. Disk should be in same az as the instance
 3. Install EBS drivers
 4. EC2 instance should have IAM role to access EBS volumes.
 
@@ -90,4 +90,25 @@ EBS
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
 kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.53"
 ```
+***Static Provisioning:***
+- Frist create EBS volume in an AZ, add EBS permissions to IAM role of EC2 instance.
+- EC2-> Security->IAM role->Add permissions-> attach police->AmazonEBSCSIDriverPolicy
+- Create PV using the volume ID
+- Create PVC
+- Create pod to mount the PVC
+- Use node selectors to make sure pod is scheduled on node the volume is attached.
+
+***Dynamic Provisioning:***
+- storageClass -> Used for dynamic provisioning to create the PV & Disk automatically.
+- Example: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/examples/kubernetes/dynamic-provisioning/manifests/storageclass.yaml
+
+```
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-sc
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+```
+
 

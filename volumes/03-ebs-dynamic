@@ -1,0 +1,22 @@
+#Storage class is created by K8s admin
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: roboshop-ebs
+reclaimPolicy: Retain #Default is delete pv and the actual storage.
+#Retain: PVC is deleted, PV stays and the disk stays too. Must cleanup manually.
+provisioner: ebs.csi.aws.com #Drivers already installed.
+volumeBindingMode: WaitForFirstConsumer #Better for Multi-AZ clusters (EKS, AKS, GKE).
+
+#volumeBindingMode: Immediate -> Better for single AZ cluster.
+
+#Immediate(default): PV is created as soon as the PVC is created, even before the pod
+#                     is scheduled. In multi-AZ clusters, it may create PV in wrong AZ.
+#                     Pod will fail to schedule because volume is in different Zone.
+
+#WaitForFirstConsumer: The PV is created only when a Pod uses the PVC, not earlier.
+#K8s looks at:Pod’s nodeSelector,Pod’s affinity & Pod’s topology.
+#Then chooses the correct AZ/zone, and then creates & binds the PV.
+#Prevents cross-zone scheduling failures.
+#Ensures PV is provisioned in the same AZ as pod.
+#Ideal for AWS EKS (EBS), Azure Disk, GCP PD.
