@@ -11,7 +11,13 @@
 ***Deployment vs StatefulSet***
 1. statefulset is for DB related applications, deployment is for applications.
 2. Headless service is mandatory for statefulset, not required for deployment.
-3. PV, PVC are mandatory for statefulset.
+3. PV, PVC are mandatory for statefulset. Uses volumeclaimtemplate which is like pvc.
+4. Pod names are random in deployment, pod names are fixed in statefulset 
+5. Pods are created in orderly maner. Statefulest -0/1/2.
+6. They are destroyed in orderly manner one by one.
+7. It preservs pod names because in case pod crash, new replica will attach to
+   same disk/pvc
+8. Claims is associated with the pod names. A PVC, PV,disk created for each replica.
 
 
 - What is headless service?
