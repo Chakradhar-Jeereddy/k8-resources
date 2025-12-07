@@ -33,3 +33,33 @@ spec:
   - protocol: TCP 
     port: 80 #Service port
     targetPort: 80 #Container port
+
+#Access to one of the pod and install nslookup
+#apt update
+#apt install dnsutils
+#Do nslookup <servicename> it will retrun IP of the service for a normal service.
+#Example -> nslookup nginx
+#;; Got recursion not available from 10.100.0.10
+#Server:         10.100.0.10
+#Address:        10.100.0.10#53
+
+#Name:   nginx.default.svc.cluster.local
+#Address: 10.100.78.100
+#;; Got recursion not available from 10.100.0.10
+
+#Now create below headless service with clusterIP set to None
+
+---
+apiVersion: v1 
+kind: Service  #Resource type service
+metadata: 
+ name: nginx-headless
+spec:
+  clusterIP: None
+  selector: #Filter the pods based on these selectors
+   purpose: headless-svc-demo  
+   project: roboshop
+  ports:
+  - protocol: TCP 
+    port: 80 #Service port
+    targetPort: 80 #Container port
