@@ -8,6 +8,12 @@
                and headless service both. One is for loadbalancing and other one
                is for peer discovery.
 
+***Deployment vs StatefulSet***
+1. statefulset is for DB related applications, deployment is for applications.
+2. Headless service is mandatory for statefulset, not required for deployment.
+3. PV, PVC are mandatory for statefulset.
+
+
 - What is headless service?
   If a service clusterIP is none, then it is called as headless service. 
   When provisioning stateful applications in k8s we need peer discovery 
