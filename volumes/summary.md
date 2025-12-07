@@ -17,3 +17,12 @@ Dynamic
 4. We need to create SC.
 5. We need to create PVC, mention SC name.
 6. Volume and PV will be automatically created.
+
+1. StatefulSet
+2. Headless service
+
+Deployment - For stateless applications. Only shared disks will be created if PV
+             and PVC are used.
+StatefulSet - For stateful applicatuons like DB. Every pod replica creates its own disk.
+
+
