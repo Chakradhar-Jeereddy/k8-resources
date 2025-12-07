@@ -4,3 +4,4 @@
 - What messure the usage? metric server, comes as Add-on for eks.
 - Resource requests & limits are mandatory for HPA to messure.
 - Without limit we can messure usage.
+- HPA always watches the deployment
