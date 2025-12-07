@@ -48,12 +48,13 @@ spec:
 #;; Got recursion not available from 10.100.0.10
 
 #Now create below headless service with clusterIP set to None
-
+#Do the same nslookup of this service it will return the IPs of the pods.
+#Used for peer discovery or to find available members of the DB/STS cluster.
 ---
 apiVersion: v1 
 kind: Service  #Resource type service
 metadata: 
- name: nginx-headless
+ name: nginx-headless #If cluster IP is none, it is called as headless service
 spec:
   clusterIP: None
   selector: #Filter the pods based on these selectors
