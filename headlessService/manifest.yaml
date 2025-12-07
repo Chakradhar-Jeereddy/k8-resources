@@ -30,6 +30,6 @@ spec:
    purpose: headless-svc-demo  
    project: roboshop
   ports:
-  - protocal: TCP 
+  - protocol: TCP 
     port: 80 #Service port
     targetPort: 80 #Container port
