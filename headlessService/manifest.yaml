@@ -26,10 +26,10 @@ kind: Service  #Resource type service
 metadata: 
  name: nginx
 spec:
- selector: #Filter the pods based on these selectors
-  purpose: headless-svc-demo  
-  project: roboshop
- ports:
- - protocal: TCP 
-   port: 80 #Service port
-   targetPort: 80 #Container port
+  selector: #Filter the pods based on these selectors
+   purpose: headless-svc-demo  
+   project: roboshop
+  ports:
+  - protocal: TCP 
+    port: 80 #Service port
+    targetPort: 80 #Container port
