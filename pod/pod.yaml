@@ -1,3 +1,11 @@
+#containers - Is a list object, contains list of containers.
+#ports: indentation is parallel to image
+#resource:indentation is parallel to image
+#cpu and memory are string values.
+#Mi is for memory
+#1000 milli core is 1 CPU
+#namespace: specified in metadata
+
 apiVersion: v1
 kind: Pod
 metadata:
@@ -19,11 +27,3 @@ spec:
       limits:
         cpu: "20m"
         memory: "10Mi"
-
-
-#containers - Is a list object, contains list of containers.
-#ports: parallel to image
-#resource: parallel to image
-#cpu and memory are string values.
-#Mi is for memory
-#1000 milli core is 1 CPU
