@@ -17,11 +17,11 @@
 ***Types of Services***
 1) Cluster IP(Default): Exposes the pods within cluster.
 2) NodePort: Exposes the pods outside cluster, opens the port on all nodes.
-3) Loadbalancer: Forwards the trafic no nodeport and then to cluster IP.
+3) Loadbalancer: Forwards the trafic to nodeport and then to cluster IP.
 
 - Cluster IP < NodePort < Loadbalancer
 
-***Drawback of loadbalancer***
+***Drawback of Nodeport***
 - We will be exposing the IPs of the nodes of cluster(not secure)
 - No load balancing.
 
