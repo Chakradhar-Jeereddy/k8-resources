@@ -1,3 +1,6 @@
+#template: The indentiation should be parallel to replicas.
+#Kind: ReplicaSet
+#how replicaset selects the pods? under rs spec use selector: and matchLabels
 apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
