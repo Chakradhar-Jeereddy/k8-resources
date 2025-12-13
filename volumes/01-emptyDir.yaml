@@ -1,3 +1,8 @@
+#volumes: Indentation should be parallel to containers
+#volumes: it is a list object, list of volumes
+#volumeMounts: It is list of volume mounts
+#volumeMounts: it should be parallel to image
+
 apiVersion: v1 
 kind: Pod 
 metadata: 
