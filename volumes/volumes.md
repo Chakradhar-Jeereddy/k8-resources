@@ -89,7 +89,62 @@ EBS
 ```
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
 kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.53"
+
+Objects that gets created:
+serviceaccount/ebs-csi-controller-sa created
+serviceaccount/ebs-csi-node-sa created
+role.rbac.authorization.k8s.io/ebs-csi-leases-role created
+clusterrole.rbac.authorization.k8s.io/ebs-csi-node-role created
+clusterrole.rbac.authorization.k8s.io/ebs-external-attacher-role created
+clusterrole.rbac.authorization.k8s.io/ebs-external-provisioner-role created
+clusterrole.rbac.authorization.k8s.io/ebs-external-resizer-role created
+clusterrole.rbac.authorization.k8s.io/ebs-external-snapshotter-role created
+rolebinding.rbac.authorization.k8s.io/ebs-csi-leases-rolebinding created
+clusterrolebinding.rbac.authorization.k8s.io/ebs-csi-attacher-binding created
+clusterrolebinding.rbac.authorization.k8s.io/ebs-csi-node-getter-binding created
+clusterrolebinding.rbac.authorization.k8s.io/ebs-csi-provisioner-binding created
+clusterrolebinding.rbac.authorization.k8s.io/ebs-csi-resizer-binding created
+clusterrolebinding.rbac.authorization.k8s.io/ebs-csi-snapshotter-binding created
+deployment.apps/ebs-csi-controller created
+poddisruptionbudget.policy/ebs-csi-controller created
+daemonset.apps/ebs-csi-node created
+csidriver.storage.k8s.io/ebs.csi.aws.com created
 ```
+***EBS CSI driver has two main components:***
+1. Controller (runs in control plane / worker node)
+2. Node Plugin (runs on every worker node as a DaemonSet)
+  ***Main responsibilities:***
+      - Create EBS volumes
+      - Delete EBS volumes
+      - Attach EBS volumes to EC2 instances
+      - Detach EBS volumes
+      - Create / delete snapshots
+      - Handle volume expansion
+  ***Triggered by:***
+    - PersistentVolumeClaim (PVC) creation
+    - StorageClass parameters
+  ***Controller talks to:***
+    - AWS EC2 API
+    - Kubernetes API Server
+    - When PVC created → Controller creates EBS volume → attaches it to the node
+***EBS CSI Node Plugin – “Mount & unmount volumes”***
+    - Runs as a DaemonSet (one pod per node).
+   ***Main responsibilities:***
+       - Format the EBS volume
+       - Mount volume into the node
+       - Bind-mount into the Pod
+       - Unmount volume when Pod is deleted
+       - Node-level volume expansion
+  ***Node plugin talks to:***
+     - kubelet
+     - OS mount utilities
+     - Volume attached → Node plugin mounts /dev/xvdf → Pod sees /data
+     
+***Simple analogy (easy to remember)***
+  - Component	Role
+  - Controller	📦 Create / Attach / Delete EBS
+  - Node Plugin	🔧 Mount / Unmount / Format
+    
 ***Static Provisioning:***
 - Frist create EBS volume in an AZ, add EBS permissions to IAM role of EC2 instance.
 - EC2-> Security->IAM role->Add permissions-> attach police->AmazonEBSCSIDriverPolicy
