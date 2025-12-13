@@ -28,5 +28,5 @@
 ***Loadbalancer***
 - It routes the trafic to any of the nodes
 - Node IPs are hidden from client
-- It manages load distribution between nodes.
-- Service manages load distribution between pods.
+- It manages load distribution across nodes.
+- Service manages load distribution across pods.
