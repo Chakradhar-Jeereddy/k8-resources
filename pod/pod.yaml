@@ -1,5 +1,5 @@
 #containers - Is a list object, contains list of containers.
-#ports: indentation is parallel to image
+#ports: indentation is parallel to image, it is a list of objects
 #resource:indentation is parallel to image
 #cpu and memory are string values.
 #Mi is for memory
