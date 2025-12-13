@@ -1,3 +1,5 @@
+# volumes is the list of volmumes/types
+# volumeMounts is the list of mounts
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
