@@ -169,12 +169,20 @@ volumeBindingMode: WaitForFirstConsumer
 EFS
 ===
 - EFS is elastic and size can go upto PB, it has max filesize 47.9 TB.
-- It automatically expands its size as needed, you for what used.
+- It automatically expands its size as needed, you pay for what was used.
 - We can select fs type in EBS, but EFS has fixed type called NFS.
 - EBS not requied SG, for EFS we should attach security group(its in network).
 - NFS port is 2049
 - Allow 2049 in EFS SG from EC2 SG
 
+***Where to enable port 2049?***
+   - You must allow it in Security Groups, not Kubernetes.
+   - EFS Mount Target Security Group
+   - Inbound rule:
+   - Protocol: TCP
+   - Port: 2049
+   - Source: Worker node security group
+     
 EFS Static provisioning
 =======================
 1. Create disk.
