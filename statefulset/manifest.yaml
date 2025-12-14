@@ -1,3 +1,5 @@
+#Since volumes need to be mounted on all pods
+#volumeClaimTemplates indentation should be parallel to template
 #Headless service(clusterIP none)
 apiVersion: v1
 kind: Service
