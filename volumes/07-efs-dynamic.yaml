@@ -1,3 +1,8 @@
+# Volumebindmode doesn't apply to EFS, it is by default immediate no "waitforfirstconsumer".
+# Not just that EFS is a shared volume and not a volume attached storage like EBS.
+# You need to have the EFS created on each AZ, so that you can mount the EFS on nodes across AZ.
+# This is the storage that supports the accessMode ReadWriteMany
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
