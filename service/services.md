@@ -1,5 +1,5 @@
 ### Services
-- pop to pod communication throug pod IPs is not useful,
+- pop to pod communication through pod IPs is not useful,
   since pod IPs are ephemeral
 - Service provides stable endpoint or IP for pod to pod communication.
 - Load balancing
