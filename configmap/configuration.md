@@ -5,6 +5,7 @@
 - ConfigMaps are used by Pods to configure containers.
 
 ***Purpose:*** Use a ConfigMap for setting configuration data separately from application code.
+
 ***Example:*** You developed an application that looks for an environment variable named `DB_HOST`. Locally, you set this variable to `localhost`. In the cloud, this environment variable must refer to a Service that exposes the database component to the cluster. In this case, the variable should be placed in a ConfigMap rather than in the Dockerfile, so you don’t need to rebuild the image to change the environment value. For example, a cart service needs catalogue service information.
 
                
