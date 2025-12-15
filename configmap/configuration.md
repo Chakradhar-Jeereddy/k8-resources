@@ -5,11 +5,9 @@
 - ConfigMaps are used by Pods to configure containers.
 
 ***Purpose:*** Use a ConfigMap for setting configuration data separately from application code.
-***Example:*** You developped an application that look into env named DB_HOST. Locally you set 
-               the variable to localhost. In clould this env as to refer to service that exposes
-               database component to your cluster. In this case, put the variable in configMap 
-               and not in Dockerfile, so you don't have to rebuild the image to change the ENV.
-               Like cart needs catalogue informatation.
+***Example:*** You developed an application that looks for an environment variable named `DB_HOST`. Locally, you set this variable to `localhost`. In the cloud, this environment variable must refer to a Service that exposes the database component to the cluster. In this case, the variable should be placed in a ConfigMap rather than in the Dockerfile, so you don’t need to rebuild the image to change the environment value. For example, a cart service needs catalogue service information.
+
+               
 ***Differences:*** Unlike most of the k8s objects that have a ***spec***, a configMap has ***data** 
                    and ***bindaryData*** fields. Both accepts key-value pairs as their values
                    Data field accepts UTF-8 strings and binaryData field accepts base64 strings.
