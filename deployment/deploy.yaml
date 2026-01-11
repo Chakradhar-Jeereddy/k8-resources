@@ -1,24 +1,33 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
- name: nginx-deploy
-# These are deployment labels
- labels:
-    app: nginx
-spec:
-  replicas: 1
-  selector:
-# These labels are used to select the pods and replicaset
-    matchLabels:
-      purpose: deploy-demo
-      project: roboshop
-# This is pod template
-  template:
+apiVersion: apps/v1                  # Application version of the resource(its apps/v1 for workloads).
+kind: Deployment                     # Declares the resource as deploymemt.
+metadata:                            # Metadata of the resource.
+ name: mydp                          # Name of the resource.
+ labels:                             # Labels to identify the resources.
+  env: prod                         # Key:Value pair
+  project: roboshop
+spec:                                # Declares the desired state of the application.
+ replicas: 3                         # Declares the desrired replicas to be active.
+ selector:                           # Manage the pods with the matching lables.
+   matchLabels:
+     env: prod
+     project: roboshop
+ strategy:
+  type: RollingUpdate                # Specifies to follow rolling update strategy, it can be recreate.
+  rollingUpdate:
+    maxSurge: 1                      # Maximum number of pods allowed to run above desired capacity.
+    maxUnavailable: 1                # Number of pods below the desired replicas is tollerated.
+ template:
     metadata:
+      name: mypod
       labels:
-       purpose: deploy-demo
-       project: roboshop
+        env: prod
+        project: roboshop
     spec:
+      restartPolicy: Always
       containers:
-      - image: nginx
-        name: nginx
+        - name: nginx
+          image: nginx
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              protocol: TCP
