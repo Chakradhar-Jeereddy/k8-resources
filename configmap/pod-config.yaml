@@ -1,11 +1,14 @@
-apiVersion: v1
-kind: Pod
+```
+apiVersion: v1               # Kubernetes API version; v1 is for core objects like Pod, Service, ConfigMap
+kind: Pod                    # Object type; here we are creating a Pod
 metadata:
-  name: app-conf
+  name: env-configmap         # Name of the Pod
 spec:
- containers:
- - name: nginx
-   image: nginx
-   envFrom:
-   - configMapRef:
-      name: pod-config
+  containers:                 # List of containers in this Pod
+    - name: app               # Name of the container
+      command: ["/bin/sh", "-c", "printenv"]  # Command to run inside the container; prints all environment variables
+      image: busybox:latest   # Container image to use; busybox is lightweight Linux image
+      envFrom:                # Populate environment variables from external sources
+        - configMapRef:       # Reference a ConfigMap as source of environment variables
+            name: myconfigmap # Name of the ConfigMap to pull environment variables from
+```
