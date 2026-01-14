@@ -274,6 +274,7 @@ How to “shrink” EBS (manual workaround)
 Comparison table
 ==
 - ***Storage	Expand	Shrink**
+
 | Storage Type   | Expand | Shrink |
 |----------------|--------|-------|
 | EBS            | ✅      | ❌     |
@@ -283,6 +284,7 @@ Comparison table
 Big picture
 ==
 - **Filesystem	Online grow	Online shrink**
+- 
 | Filesystem | Online Grow | Shrinking |
 |------------|------------|-----------|
 | ext4       | ✅ Yes     | ❌ No (offline only) |
