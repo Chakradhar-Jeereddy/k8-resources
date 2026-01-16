@@ -4,7 +4,7 @@ metadata:
   name: roboshop-efs
 provisioner: efs.csi.aws.com
 parameters:
-  provisioningMode: efs-ap
+  provisioningMode: efs-ap             # Tells K8s to use access point and not root directory.
   fileSystemId: fs-0648de5d2e5cdfe42
   directoryPerms: "700"
   basePath: "/roboshop" # optional
